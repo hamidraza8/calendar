@@ -1,0 +1,188 @@
+@import '~antd/dist/antd.css';
+
+$darkcolor: #143381d3;
+$txtcolor:#ffff;
+$calendarheadbgcolor:#dce4f978;
+$dayHovercolor: rgba(221, 221, 221, 0.289);
+$eventbg:#e8ecf5;
+$eventactivecolor:#92acee78;
+$bordorthickness:.2vw;
+@mixin day-active-borders {
+  border-right: $bordorthickness solid $darkcolor;
+  border-left: $bordorthickness solid $darkcolor;
+  border-top: $bordorthickness solid $darkcolor;
+  border-bottom:$bordorthickness solid $darkcolor;
+}
+@mixin main-heading {
+  max-width: 100%;
+    background-color: $darkcolor;
+    min-height: 6vh;
+    color: $txtcolor;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+@mixin sub-heading {
+  
+padding-right: 1vw;
+  min-height: 6vh;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: .8vw;
+  background: $calendarheadbgcolor;
+  color: $darkcolor;
+  font-weight: bold;
+
+}
+@mixin inline-box {
+  border-left: .3vw solid $darkcolor  !important; 
+    text-align: left;
+    font-size: 2vh;
+    border-radius: 5%;  
+    font-weight: bold;
+    max-height: 10vh;
+    overflow: hidden;
+    padding-left: .3vw;
+}
+
+  * {
+  box-sizing: border-box;
+}
+
+
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+}
+.calendar-container{
+  max-width: 98%;
+  background-color: #fdfefed3;
+  
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.calendar-nav{
+  @include main-heading;
+span {
+
+    text-align: center;
+    border: 0px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.calendar-headings {
+  display: flex;
+  width: 100%;
+}
+
+.calendar-heading {
+  
+  @include sub-heading;
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+ 
+
+}
+
+.calendar-days {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: calc(100% - 1vh);
+}
+
+.calendar-day {
+  padding: .5vw 1.3vw;
+  text-align: right;
+  width: 14.285714285714286%;
+  border-top: .2vh solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top-width: 50%;
+  min-height: 10vh;
+  background-color: $txtcolor;
+ 
+}
+
+.calendar-day.is-active {
+@include day-active-borders;
+}
+.disabled-day{
+
+  color: rgb(162, 160, 160);
+}
+.calendar-day:hover{
+
+  background-color: $dayHovercolor;
+  cursor: pointer;
+} 
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+
+
+.event-form-container{
+margin-top: 30px;
+  
+}
+.nav-text{
+
+  color:white;
+  font-size: 2.5vh;
+  font-weight: bold;
+  margin-left: 1vh;
+  cursor: pointer;
+}
+.nav-icon {
+
+color: white;
+  font-size: 2.5vh;
+  margin-left: 1vw;
+  margin-top: 100vh;
+
+}
+.calendar-event{
+@include inline-box;
+background-color: $eventbg;
+color: $darkcolor;
+margin-left: -10%;
+max-width: 98%;
+clear: both;
+} 
+
+.calendar-event.is-active {
+background-color: $eventactivecolor;
+color: $darkcolor;
+}
+
+.event-detail-head{
+color: $darkcolor;
+font-size: 3vh;
+font-weight: bold;
+min-width: 0.1vw;
+max-width: 50vw;
+overflow-wrap:break-word;
+}
+.head2 {
+ font-size: 2.5vh;
+  }
+.event-detail-content {
+  color:$darkcolor;
+  font-size: 2vh;
+  min-width: 3vw;
+  max-width: 50vw;
+  overflow-wrap: break-word;
+}
