@@ -1,5 +1,5 @@
 import { isCurrentMonthDate } from "./CalendarUtil";
-import { Popover } from "antd";
+import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
 import "./Calendar.scss";
 const MonthDay = (props) => {
@@ -27,42 +27,19 @@ const MonthDay = (props) => {
       props.onDayClicked(props.date, props.eventData);
     }
   };
-  const EventDetailPopupContent = (
-    <div>
-      <div className="event-detail-head">{eventName}</div>
-      {
-        <div className="event-detail-content">
-          On <b>{date.format("MMM Do YY")} </b> From <b>{fromEventTime}</b> To{" "}
-          <b>{toEventTime}</b>
-        </div>
-      }
-      <div className="event-detail-head head2">Detail:</div>
-      <p className="event-detail-content">{Detail}</p>
-    </div>
-  );
 
   return (
-    <div className={dayClassName} onClick={onDayClicked}>
-      {dateDisplay}
-      <Popover
-        content={EventDetailPopupContent}
-        placement="right"
-        title="Calendar"
-      >
-        <div className={eventClassName}>
-          {eventName}
-          {eventName !== undefined ? (
-            <>
-              <div>
-                {fromEventTime} - {toEventTime}
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-      </Popover>
-    </div>
+    <MonthDayPresentation
+      eventName={eventName}
+      fromEventTime={fromEventTime}
+      toEventTime={toEventTime}
+      Detail={Detail}
+      date={date}
+      dateDisplay={dateDisplay}
+      dayClassName={dayClassName}
+      eventClassName={eventClassName}
+      onDayClicked={onDayClicked}
+    />
   );
 };
 export default MonthDay;

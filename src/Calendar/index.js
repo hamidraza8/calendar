@@ -1,9 +1,8 @@
 import moment from "moment";
-import "./Calendar.scss";
-import { LeftOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import MonthDates from "./MonthDates";
 import AddEventForm from "./AddEventForm";
+import CalendarPresentation from "./CalendarPresentation";
 
 const EventCalendar = () => {
   const [toggelForm, setToggelForm] = useState(true);
@@ -31,27 +30,11 @@ const EventCalendar = () => {
     />
   );
   return (
-    <div className="calendar-container">
-      <div className="calendar-nav">
-        {!toggelForm ? (
-          <>
-            <span onClick={toggelCalendarForm}>
-              {" "}
-              <LeftOutlined />{" "}
-            </span>
-            <span className="nav-text">Add Event</span>
-          </>
-        ) : (
-          <>
-            <span className="nav-icon">
-              <CalendarOutlined />
-            </span>
-            <span className="nav-text">Calendar</span>
-          </>
-        )}
-      </div>
-      {calendarComponent}
-    </div>
+    <CalendarPresentation
+      calendarComponent={calendarComponent}
+      toggelCalendarForm={toggelCalendarForm}
+      toggelForm={toggelForm}
+    />
   );
 };
 export default EventCalendar;

@@ -1,17 +1,9 @@
 import { getWeekDaysByWeekNumber } from "./CalendarUtil";
 import "./Calendar.scss";
-
+import WeekHeaderPresentation from "./WeekHeaderPresentation";
 const WeekHeader = () => {
   const weekDays = getWeekDaysByWeekNumber();
-  return (
-    <div className="calendar-headings">
-      {weekDays.map((weekDay) => (
-        <div key={weekDay.dayNumber} className="calendar-heading">
-          {weekDay.day}
-        </div>
-      ))}
-    </div>
-  );
+  return <WeekHeaderPresentation weekDays={weekDays} />;
 };
 
 export default WeekHeader;
