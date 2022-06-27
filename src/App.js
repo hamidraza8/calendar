@@ -1,11 +1,8 @@
-
-import EventCalendar from './Calendar'
+import EventCalendar from "./Calendar";
 function App() {
-  
   return (
-
-<div className="App">
-   <EventCalendar  />  
+    <div className="App">
+      <EventCalendar />
     </div>
   );
 }
