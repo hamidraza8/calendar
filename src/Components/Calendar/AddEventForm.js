@@ -1,9 +1,9 @@
 import moment from "moment";
 import { Button, Form, Input, DatePicker, TimePicker } from "antd";
-const AddEventForm = (props) => {
+const AddEventForm = ({ onEventAdded, date, eventData }) => {
   const dateFormat = "DD-MM-YYYY";
   const onFinish = (values) => {
-    props.onEventAdded(values);
+    onEventAdded(values);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -23,10 +23,10 @@ const AddEventForm = (props) => {
         }}
         initialValues={{
           remember: true,
-          eventDate: moment(props.date, dateFormat),
-          Name: props.eventData[props.date]?.Name,
-          EventTime: props.eventData[props.date]?.EventTime,
-          Detail: props.eventData[props.date]?.Detail,
+          eventDate: moment(date, dateFormat),
+          Name: eventData[date]?.Name,
+          EventTime: eventData[date]?.EventTime,
+          Detail: eventData[date]?.Detail,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}

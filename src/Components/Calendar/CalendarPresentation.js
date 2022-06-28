@@ -1,13 +1,17 @@
 import "./Calendar.scss";
 import { LeftOutlined, CalendarOutlined } from "@ant-design/icons";
 
-const CalendarPresentation = (props) => {
+const CalendarPresentation = ({
+  toggelForm,
+  toggelCalendarForm,
+  calendarComponent,
+}) => {
   return (
     <div className="calendar-container">
       <div className="calendar-nav">
-        {!props.toggelForm ? (
+        {!toggelForm ? (
           <>
-            <span onClick={props.toggelCalendarForm}>
+            <span onClick={toggelCalendarForm}>
               <LeftOutlined />
             </span>
             <span className="nav-text">Add Event</span>
@@ -22,7 +26,7 @@ const CalendarPresentation = (props) => {
         )}
       </div>
 
-      {props.calendarComponent}
+      {calendarComponent}
     </div>
   );
 };

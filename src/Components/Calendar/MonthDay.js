@@ -1,15 +1,20 @@
 import { isCurrentMonthDate } from "./CalendarUtil";
 import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
+import * as dateFormate from "./dateTimeFormates";
 import "./Calendar.scss";
 const MonthDay = (props) => {
   let eventName = props.eventData ? props.eventData.Name : undefined;
-  let fromEventTime = props.eventData?.EventTime[0].format("hh:mm a");
-  let toEventTime = props.eventData?.EventTime[1].format("hh:mm a");
+  let fromEventTime = props.eventData?.EventTime[0].format(
+    dateFormate.TIME_FORMATE
+  );
+  let toEventTime = props.eventData?.EventTime[1].format(
+    dateFormate.TIME_FORMATE
+  );
   let Detail = props.eventData ? props.eventData.Detail : undefined;
-  let date = moment(props.date, "DD-MM-YYYY");
-  const currentDate = moment().format("DD-MM-YYYY");
-  const calenderDate = date.format("DD-MM-YYYY");
+  let date = moment(props.date, dateFormate.DATE_FORMATE);
+  const currentDate = moment().format(dateFormate.DATE_FORMATE);
+  const calenderDate = date.format(dateFormate.DATE_FORMATE);
   let dateDisplay = date.format("DD").replace(/^0+/, "");
   let dayClassName =
     currentDate === calenderDate ? "calendar-day is-active" : "calendar-day";
@@ -23,7 +28,7 @@ const MonthDay = (props) => {
       : "calendar-event";
 
   const onDayClicked = () => {
-    if (isCurrentMonthDate(moment(props.date, "DD-MM-YYYY"))) {
+    if (isCurrentMonthDate(moment(props.date, dateFormate.DATE_FORMATE))) {
       props.onDayClicked(props.date, props.eventData);
     }
   };
