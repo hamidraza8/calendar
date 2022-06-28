@@ -3,21 +3,21 @@ import { useState } from "react";
 import MonthDates from "./MonthDates";
 import AddEventForm from "./AddEventForm";
 import CalendarPresentation from "./CalendarPresentation";
-import * as dateFormate from "./dateTimeFormates";
+import * as dateFormate from "./DateTimeFormates";
 
 const EventCalendar = () => {
   const [toggelForm, setToggelForm] = useState(true);
   const [selectedDate, setselectedDate] = useState(
     moment().format(dateFormate.DATE_FORMATE)
   );
-  const [eventData, setEvenstData] = useState([]);
+  const [eventData, setEvents] = useState([]);
   const toggelCalendarForm = (date) => {
     setToggelForm(!toggelForm);
     if (toggelForm) setselectedDate(date);
   };
   const onEventAdded = (data) => {
     var key = data.eventDate.format(dateFormate.DATE_FORMATE);
-    setEvenstData({ ...eventData, [key]: data });
+    setEvents({ ...eventData, [key]: data });
     toggelCalendarForm();
   };
 
