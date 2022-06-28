@@ -1,5 +1,5 @@
 import moment from "moment";
-
+import * as dateFormate from "./DateTimeFormates";
 const isCurrentMonthDate = function (date) {
   const currentMonthFirstDate = moment().startOf("M");
   const currentMonthLastDate = moment().endOf("M");
@@ -14,21 +14,24 @@ const getdateRange = function (startDate, endDate) {
   let currentDate = startDate;
   let index = 0;
   while (currentDate.isBefore(endDate)) {
-    dateRange.push({ date: currentDate.format("DD-MM-YYYY"), id: index++ });
+    dateRange.push({
+      date: currentDate.format(dateFormate.DATE_FORMATE),
+      id: index++,
+    });
 
     currentDate.add(1, "day");
   }
   return dateRange;
 };
-
+const firstDayOfWeek = "Su";
 const getFirstDateOfCalendar = function () {
   let currentDate = moment().startOf("month");
 
   let count = 7;
   do {
-    let dayofWeek = currentDate.format("dd");
+    let dayofWeek = currentDate.format(dateFormate.WEEK_DAY_FORMATE);
 
-    if (dayofWeek === "Su") {
+    if (dayofWeek === firstDayOfWeek) {
       return currentDate;
     }
     currentDate = currentDate.add(-1, "day");
@@ -44,8 +47,8 @@ const getLastDateOfCalendar = function () {
 
   let count = 7;
   do {
-    var dayofWeek = currentDate.format("dd");
-    if (dayofWeek === "Sa") return currentDate;
+    var dayofWeek = currentDate.format(dateFormate.WEEK_DAY_FORMATE);
+    if (dayofWeek === firstDayOfWeek) return currentDate;
 
     currentDate.add(1, "day");
     count--;
@@ -55,13 +58,15 @@ const getLastDateOfCalendar = function () {
 };
 
 const getWeekDaysByWeekNumber = function () {
-  const dateformat = "dddd";
   var date = moment().isoWeek(1).startOf("week"),
     weeklength = 7,
     result = [];
   let dayNumber = 0;
   while (weeklength--) {
-    result.push({ dayNumber: dayNumber++, day: date.format(dateformat) });
+    result.push({
+      dayNumber: dayNumber++,
+      day: date.format(dateFormate.WEEK_DAY_DISPAY_FORMATE),
+    });
     date.add(1, "day");
   }
   return result;
