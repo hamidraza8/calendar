@@ -21,6 +21,7 @@ const CalendarPresentation = (props) => {
           </>
         )}
       </div>
+
       {props.calendarComponent}
     </div>
   );

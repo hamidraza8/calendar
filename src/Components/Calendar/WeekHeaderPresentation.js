@@ -1,9 +1,9 @@
 import "./Calendar.scss";
 
-const WeekHeaderPresentation = (props) => {
+const WeekHeaderPresentation = ({ weekDays }) => {
   return (
     <div className="calendar-headings">
-      {props.weekDays.map((weekDay) => (
+      {weekDays.map((weekDay) => (
         <div key={weekDay.dayNumber} className="calendar-heading">
           {weekDay.day}
         </div>
