@@ -1,7 +1,7 @@
 import moment from "moment";
+import * as dateFormate from "../../common/constants/DateTimeFormates";
 import { Button, Form, Input, DatePicker, TimePicker } from "antd";
 const AddEventForm = ({ onEventAdded, date, eventData }) => {
-  const dateFormat = "DD-MM-YYYY";
   const onFinish = (values) => {
     onEventAdded(values);
   };
@@ -23,7 +23,7 @@ const AddEventForm = ({ onEventAdded, date, eventData }) => {
         }}
         initialValues={{
           remember: true,
-          eventDate: moment(date, dateFormat),
+          eventDate: moment(date, dateFormate.DATE_FORMATE),
           Name: eventData[date]?.Name,
           EventTime: eventData[date]?.EventTime,
           Detail: eventData[date]?.Detail,
@@ -45,7 +45,7 @@ const AddEventForm = ({ onEventAdded, date, eventData }) => {
           <Input />
         </Form.Item>
         <Form.Item label="Event Date" name="eventDate">
-          <DatePicker format={dateFormat} disabled />
+          <DatePicker format={dateFormate.DATE_FORMATE} disabled />
         </Form.Item>
         <Form.Item
           label="EventTime"

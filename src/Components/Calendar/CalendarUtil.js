@@ -50,7 +50,7 @@ const getLastDateOfCalendar = function () {
     dayofWeek = currentDate.format(dateFormate.WEEK_DAY_FORMATE);
   }
 
-  return currentDate;
+  return currentDate.add(7, "days");
 };
 
 const getWeekDaysByWeekNumber = function () {
