@@ -1,7 +1,7 @@
 import { isCurrentMonthDate } from "./CalendarUtil";
 import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
-import * as dateFormate from "./DateTimeFormates";
+import * as dateFormate from "../../common/constants/DateTimeFormates";
 import "./Calendar.scss";
 const MonthDay = (props) => {
   let eventName = props.eventData ? props.eventData.Name : undefined;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import MonthDates from "./MonthDates";
 import AddEventForm from "./AddEventForm";
 import CalendarPresentation from "./CalendarPresentation";
-import * as dateFormate from "./DateTimeFormates";
+import * as dateFormate from "../../common/constants/DateTimeFormates";
 
 const EventCalendar = () => {
   const [toggelForm, setToggelForm] = useState(true);
