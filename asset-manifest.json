@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/calendarRedux/static/css/main.d1af98c1.css",
-    "main.js": "/calendarRedux/static/js/main.57ede3a0.js",
-    "static/js/787.26ea3775.chunk.js": "/calendarRedux/static/js/787.26ea3775.chunk.js",
-    "index.html": "/calendarRedux/index.html",
-    "main.d1af98c1.css.map": "/calendarRedux/static/css/main.d1af98c1.css.map",
-    "main.57ede3a0.js.map": "/calendarRedux/static/js/main.57ede3a0.js.map",
-    "787.26ea3775.chunk.js.map": "/calendarRedux/static/js/787.26ea3775.chunk.js.map"
+    "main.css": "/calendar/redux/static/css/main.d1af98c1.css",
+    "main.js": "/calendar/redux/static/js/main.9deef47e.js",
+    "static/js/787.26ea3775.chunk.js": "/calendar/redux/static/js/787.26ea3775.chunk.js",
+    "index.html": "/calendar/redux/index.html",
+    "main.d1af98c1.css.map": "/calendar/redux/static/css/main.d1af98c1.css.map",
+    "main.9deef47e.js.map": "/calendar/redux/static/js/main.9deef47e.js.map",
+    "787.26ea3775.chunk.js.map": "/calendar/redux/static/js/787.26ea3775.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d1af98c1.css",
-    "static/js/main.57ede3a0.js"
+    "static/js/main.9deef47e.js"
   ]
 }
