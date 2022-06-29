@@ -10,7 +10,6 @@ const MonthDatesPresentation = (props) => {
           <MonthDay
             key={day.id}
             date={day.date}
-            eventData={props.eventData[day.date]}
             onDayClicked={props.onDayClicked}
           />
         ))}

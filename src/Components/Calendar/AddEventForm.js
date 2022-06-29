@@ -1,9 +1,20 @@
 import moment from "moment";
 import * as dateFormate from "../../common/constants/DateTimeFormates";
 import { Button, Form, Input, DatePicker, TimePicker } from "antd";
-const AddEventForm = ({ onEventAdded, date, eventData }) => {
+import { connect } from "react-redux";
+import { saveEvent } from "../../redux/actions/eventActions";
+import PropTypes from "prop-types";
+
+const AddEventForm = ({
+  onEventAdded,
+  date,
+
+  saveEvent,
+  ...props
+}) => {
   const onFinish = (values) => {
-    onEventAdded(values);
+    saveEvent(values);
+    props.toggelCalendarForm();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -24,9 +35,9 @@ const AddEventForm = ({ onEventAdded, date, eventData }) => {
         initialValues={{
           remember: true,
           eventDate: moment(date, dateFormate.DATE_FORMATE),
-          Name: eventData[date]?.Name,
-          EventTime: eventData[date]?.EventTime,
-          Detail: eventData[date]?.Detail,
+          Name: props.eventData?.Name,
+          EventTime: props.eventData?.EventTime,
+          Detail: props.eventData?.Detail,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -77,4 +88,16 @@ const AddEventForm = ({ onEventAdded, date, eventData }) => {
     </div>
   );
 };
-export default AddEventForm;
+
+AddEventForm.propTypes = {
+  saveEvent: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state, ownProps) {
+  return {};
+}
+const mapDispatchToProps = {
+  saveEvent,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEventForm);
