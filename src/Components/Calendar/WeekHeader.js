@@ -1,6 +1,6 @@
 import { getWeekDaysByWeekNumber } from "./CalendarUtil";
 import WeekHeaderPresentation from "./WeekHeaderPresentation";
-const WeekHeader = () => {
+const WeekHeader = (props) => {
   const weekDays = getWeekDaysByWeekNumber();
   return (
     <>

@@ -24,11 +24,12 @@ const MonthDay = (props) => {
   const currentDate = moment().format(dateFormate.DATE_FORMATE);
   const calenderDate = date.format(dateFormate.DATE_FORMATE);
   let dateDisplay = date.format(dateFormate.DAY_FORMATE).replace(/^0+/, "");
+
   let dayClassName =
     currentDate === calenderDate
       ? [calendar["calendar-day"], calendar["is-active"]].join(" ")
       : calendar["calendar-day"];
-  dayClassName = !isCurrentMonthDate(date)
+  dayClassName = !isCurrentMonthDate(props.currentMonth, date)
     ? [dayClassName, calendar["disabled-day"]].join(" ")
     : dayClassName;
 
@@ -38,9 +39,7 @@ const MonthDay = (props) => {
       : calendar["calendar-event"];
 
   const onDayClicked = () => {
-    if (isCurrentMonthDate(moment(date, dateFormate.DATE_FORMATE))) {
-      props.onDayClicked(props.date, eventDetail);
-    }
+    props.onDayClicked(props.date, eventDetail);
   };
 
   return (

@@ -1,6 +1,7 @@
 import calendar from "./Calendar.module.scss";
 import MonthDay from "./MonthDay";
 import WeekHeader from "./WeekHeader";
+
 const MonthDatesPresentation = (props) => {
   return (
     <>
@@ -11,6 +12,7 @@ const MonthDatesPresentation = (props) => {
             key={day.id}
             date={day.date}
             onDayClicked={props.onDayClicked}
+            currentMonth={props.currentMonth}
           />
         ))}
       </div>

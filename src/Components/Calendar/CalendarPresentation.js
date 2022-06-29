@@ -1,10 +1,18 @@
 import calendar from "./Calendar.module.scss";
-import { LeftOutlined, CalendarOutlined } from "@ant-design/icons";
+import * as dateFormate from "../../common/constants/DateTimeFormates";
+import {
+  LeftOutlined,
+  RightOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
 
 const CalendarPresentation = ({
   toggelForm,
   toggelCalendarForm,
   calendarComponent,
+  currentMonth,
+  changeToNextMonth,
+  changeToPrevMonth,
 }) => {
   return (
     <div className={calendar["calendar-container"]}>
@@ -21,7 +29,24 @@ const CalendarPresentation = ({
             <span className={calendar["nav-icon"]}>
               <CalendarOutlined />
             </span>
-            <span className={calendar["nav-text"]}>Calendar</span>
+            <span className={calendar["nav-icon"]}>Calendar</span>
+
+            <span
+              className={calendar["nav-prev-icon"]}
+              onClick={changeToPrevMonth}
+            >
+              <LeftOutlined />
+            </span>
+
+            <span
+              className={calendar["nav-next-icon"]}
+              onClick={changeToNextMonth}
+            >
+              <RightOutlined />
+            </span>
+            <span className={calendar["nav-icon"]}>
+              {currentMonth.format(dateFormate.MONTH_DISPLAY_FORMATE)}
+            </span>
           </>
         )}
       </div>

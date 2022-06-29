@@ -1,8 +1,8 @@
 import moment from "moment";
 import * as dateFormate from "../../common/constants/DateTimeFormates";
-const isCurrentMonthDate = function (date) {
-  const currentMonthFirstDate = moment().startOf("M");
-  const currentMonthLastDate = moment().endOf("M");
+const isCurrentMonthDate = function (currentMonth, date) {
+  const currentMonthFirstDate = moment(currentMonth).startOf("M");
+  const currentMonthLastDate = moment(currentMonth).endOf("M");
   return !(
     moment(date).isBefore(currentMonthFirstDate) ||
     moment(date).isAfter(currentMonthLastDate)
@@ -24,8 +24,8 @@ const getdateRange = function (startDate, endDate) {
   return dateRange;
 };
 const firstDayOfWeek = "Su";
-const getFirstDateOfCalendar = function () {
-  let currentDate = moment().startOf("month");
+const getFirstDateOfCalendar = function (currentMonth) {
+  let currentDate = currentMonth.startOf("month");
 
   let count = 7;
   do {
@@ -42,8 +42,8 @@ const getFirstDateOfCalendar = function () {
   return currentDate;
 };
 const lastDayOfWeek = "Sa";
-const getLastDateOfCalendar = function () {
-  var currentDate = moment().endOf("month");
+const getLastDateOfCalendar = function (currentMonth) {
+  var currentDate = currentMonth.endOf("month");
   var dayofWeek = currentDate.format(dateFormate.WEEK_DAY_FORMATE);
   while (dayofWeek !== lastDayOfWeek) {
     currentDate.add(1, "day");
