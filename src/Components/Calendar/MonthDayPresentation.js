@@ -1,17 +1,21 @@
 import { Popover } from "antd";
-import "./Calendar.scss";
+import calendar from "./Calendar.module.scss";
 const MonthDayPresentation = (props) => {
   const EventDetailPopupContent = (
     <div>
-      <div className="event-detail-head">{props.ventName}</div>
+      <div className={calendar["event-detail-head"]}>{props.eventName}</div>
       {
-        <div className="event-detail-content">
+        <div className={calendar["event-detail-content"]}>
           On <b>{props.date.format("MMM Do YY")} </b> From{" "}
           <b>{props.fromEventTime}</b> To <b>{props.toEventTime}</b>
         </div>
       }
-      <div className="event-detail-head head2">Detail:</div>
-      <p className="event-detail-content">{props.Detail}</p>
+      <div
+        className={[calendar["event-detail-head"], calendar["head2"]].join(" ")}
+      >
+        Detail:
+      </div>
+      <p className={calendar["event-detail-content"]}>{props.Detail}</p>
     </div>
   );
 

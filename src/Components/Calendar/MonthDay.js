@@ -2,11 +2,8 @@ import { isCurrentMonthDate } from "./CalendarUtil";
 import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
 import * as dateFormate from "../../common/constants/DateTimeFormates";
-import "./Calendar.scss";
+import calendar from "./Calendar.module.scss";
 import { connect } from "react-redux";
-import * as eventActions from "../../redux/actions/eventActions";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
 import { useState, useEffect } from "react";
 const MonthDay = (props) => {
   const [eventDetail, setEventDetail] = useState(null);
@@ -17,6 +14,7 @@ const MonthDay = (props) => {
   }, [props, props.events]);
 
   let eventName = eventDetail ? eventDetail.Name : undefined;
+
   let fromEventTime = eventDetail?.EventTime[0].format(
     dateFormate.TIME_FORMATE
   );
@@ -27,15 +25,17 @@ const MonthDay = (props) => {
   const calenderDate = date.format(dateFormate.DATE_FORMATE);
   let dateDisplay = date.format(dateFormate.DAY_FORMATE).replace(/^0+/, "");
   let dayClassName =
-    currentDate === calenderDate ? "calendar-day is-active" : "calendar-day";
+    currentDate === calenderDate
+      ? [calendar["calendar-day"], calendar["is-active"]].join(" ")
+      : calendar["calendar-day"];
   dayClassName = !isCurrentMonthDate(date)
-    ? dayClassName + " disabled-day"
+    ? [dayClassName, calendar["disabled-day"]].join(" ")
     : dayClassName;
 
   let eventClassName =
     currentDate === calenderDate
-      ? "calendar-event is-active"
-      : "calendar-event";
+      ? [calendar["calendar-event"], calendar["is-active"]].join(" ")
+      : calendar["calendar-event"];
 
   const onDayClicked = () => {
     if (isCurrentMonthDate(moment(date, dateFormate.DATE_FORMATE))) {
@@ -58,15 +58,11 @@ const MonthDay = (props) => {
   );
 };
 
-MonthDay.propTypes = {
-  //  loadEvents: PropTypes.func.isRequired,
-};
+MonthDay.propTypes = {};
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {
-      //    loadEvents: bindActionCreators(eventActions.loadEvents, dispatch),
-    },
+    actions: {},
   };
 }
 function mapStateToProps(state) {
