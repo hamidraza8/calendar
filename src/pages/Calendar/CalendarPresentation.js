@@ -1,5 +1,5 @@
 import calendar from "./Calendar.module.scss";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
+import * as dateFormate from "../../constants/DateTimeFormates";
 import {
   LeftOutlined,
   RightOutlined,
@@ -30,20 +30,16 @@ const CalendarPresentation = ({
               <CalendarOutlined />
             </span>
             <span className={calendar["nav-icon"]}>Calendar</span>
-
-            <span
-              className={calendar["nav-prev-icon"]}
-              onClick={changeToPrevMonth}
-            >
-              <LeftOutlined />
-            </span>
-
-            <span
-              className={calendar["nav-next-icon"]}
-              onClick={changeToNextMonth}
-            >
-              <RightOutlined />
-            </span>
+            <button aria-label="prev" onClick={changeToPrevMonth}>
+              <span className={calendar["nav-prev-icon"]}>
+                <LeftOutlined />
+              </span>
+            </button>
+            <button aria-label="next" onClick={changeToNextMonth}>
+              <span className={calendar["nav-next-icon"]}>
+                <RightOutlined />
+              </span>
+            </button>
             <span className={calendar["nav-icon"]}>
               {currentMonth.format(dateFormate.MONTH_DISPLAY_FORMATE)}
             </span>

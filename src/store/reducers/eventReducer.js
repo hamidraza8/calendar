@@ -1,6 +1,6 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
+import * as dateFormate from "../../constants/DateTimeFormates";
 
 export default function courseReducer(state = initialState.events, action) {
   switch (action.type) {

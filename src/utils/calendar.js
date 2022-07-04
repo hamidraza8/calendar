@@ -1,5 +1,5 @@
 import moment from "moment";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
+import * as dateFormate from "../constants/DateTimeFormates";
 const isCurrentMonthDate = function (currentMonth, date) {
   const currentMonthFirstDate = moment(currentMonth).startOf("M");
   const currentMonthLastDate = moment(currentMonth).endOf("M");

@@ -1,6 +1,6 @@
-import calendar from "./Calendar.module.scss";
-import MonthDay from "./MonthDay";
-import WeekHeader from "./WeekHeader";
+import calendar from "./MonthDates.module.scss";
+import MonthDay from "../MonthDay";
+import WeekHeader from "../WeekHeader";
 
 const MonthDatesPresentation = (props) => {
   return (

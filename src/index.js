@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
-import App from "./App";
+import Calendar from "./pages/Calendar";
 import reportWebVitals from "./reportWebVitals";
-import configureStore from "./redux/configureStore";
+import configureStore from "./store/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
+import "./styles/index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore();
 root.render(
   <ReduxProvider store={store}>
     <React.StrictMode>
-      <App />
+      <Calendar />
     </React.StrictMode>
   </ReduxProvider>
 );

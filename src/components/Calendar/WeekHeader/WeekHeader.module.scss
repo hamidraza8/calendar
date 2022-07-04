@@ -1,0 +1,25 @@
+$darkcolor: #143381d3;
+$calendarheadbgcolor: #dce4f978;
+
+@mixin sub-heading {
+  padding-right: 1vw;
+  min-height: 6vh;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 0.8vw;
+  background: $calendarheadbgcolor;
+  color: $darkcolor;
+  font-weight: bold;
+}
+.calendar-week-headings {
+  display: flex;
+  width: 100%;
+}
+
+.calendar-week-heading {
+  @include sub-heading;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
