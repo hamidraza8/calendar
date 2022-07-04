@@ -1,8 +1,8 @@
-import { isCurrentMonthDate } from "./CalendarUtil";
+import { isCurrentMonthDate } from "../../../utils/calendar";
 import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
-import calendar from "./Calendar.module.scss";
+import * as dateFormate from "../../../constants/DateTimeFormates";
+import calendar from "./MonthDay.module.scss";
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 const MonthDay = (props) => {

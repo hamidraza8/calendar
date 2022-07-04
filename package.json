@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^4.21.3",
+    "jest-dom": "^4.0.0",
     "moment": "^2.29.3",
     "node-sass": "^7.0.1",
     "prop-types": "^15.8.1",
@@ -30,10 +31,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "root": true,
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "transform": {
+    "\\.js$": "<rootDir>/node_modules/babel-jest"
   },
   "browserslist": {
     "production": [

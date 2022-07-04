@@ -1,0 +1,67 @@
+$darkcolor: #143381d3;
+$txtcolor: #ffff;
+
+@mixin main-heading {
+  max-width: 100%;
+  background-color: $darkcolor;
+  min-height: 6vh;
+  color: $txtcolor;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+}
+.calendar-container {
+  max-width: 90%;
+  background-color: #fdfefed3;
+
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.calendar-nav {
+  @include main-heading;
+  span {
+    text-align: center;
+    border: 0px solid transparent;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.calendar-nav > button {
+  background-color: transparent;
+  border: 0;
+}
+.calendar-nav > button > span {
+  font-size: large;
+}
+
+.nav-text {
+  color: white;
+  font-size: 2.5vh;
+  font-weight: bold;
+  margin-left: 1vh;
+  cursor: pointer;
+}
+.nav-icon {
+  color: white;
+  font-size: 2.5vh;
+  margin-left: 1vw;
+  margin-top: 100vh;
+}
+.nav-prev-icon {
+  @extend .nav-icon;
+  margin-left: 1vw;
+}
+
+.nav-next-icon {
+  @extend .nav-icon;
+  margin-left: 1vw;
+}

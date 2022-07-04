@@ -2,7 +2,7 @@ import {
   getdateRange,
   getFirstDateOfCalendar,
   getLastDateOfCalendar,
-} from "./CalendarUtil";
+} from "../../../utils/calendar";
 
 import MonthDatesPresentation from "./MonthDatesPrsentation";
 

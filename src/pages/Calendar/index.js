@@ -1,19 +1,18 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
-import MonthDates from "./MonthDates";
-import AddEventForm from "./AddEventForm";
+import MonthDates from "../../components/Calendar/MonthDates";
+import AddEventForm from "../../components/Calendar/AddEventForm";
 import CalendarPresentation from "./CalendarPresentation";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
+import * as dateFormate from "../../constants/DateTimeFormates";
 import { connect } from "react-redux";
-import { setCurrentMonth } from "../../redux/actions/monthActions";
+import { setCurrentMonth } from "../../store/actions/monthActions";
 import PropTypes from "prop-types";
 
-const EventCalendar = (props) => {
+const Calendar = (props) => {
   const [toggelForm, setToggelForm] = useState(true);
   const [currentMonthDate, setCurrentMonthDate] = useState({});
 
   useEffect(() => {
-    console.log("useEffect setting data", props.currentMonth);
     setCurrentMonthDate(props.currentMonth);
   }, [props.currentMonth]);
 
@@ -62,13 +61,13 @@ const EventCalendar = (props) => {
     />
   );
 };
-EventCalendar.propTypes = {
+Calendar.propTypes = {
   setCurrentMonth: PropTypes.func.isRequired,
   currentMonth: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
-  let currentMonth = state.currentMonth.currentMonth;
+  let currentMonth = state.currentMonth.thisMonth;
   return {
     currentMonth,
   };
@@ -77,4 +76,4 @@ const mapDispatchToProps = {
   setCurrentMonth,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventCalendar);
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

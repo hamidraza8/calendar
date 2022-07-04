@@ -1,11 +1,11 @@
 import moment from "moment";
-import * as dateFormate from "../../common/constants/DateTimeFormates";
+import * as dateFormate from "../../../constants/DateTimeFormates";
 import { Button, Form, Input, DatePicker, TimePicker } from "antd";
 import { connect } from "react-redux";
-import { saveEvent } from "../../redux/actions/eventActions";
+import { saveEvent } from "../../../store/actions/eventActions";
 import PropTypes from "prop-types";
-import "../../../node_modules/antd/dist/antd.min.css";
-import calendar from "./Calendar.module.scss";
+import "../../../../node_modules/antd/dist/antd.min.css";
+import calendar from "./AddEventForm.module.scss";
 const AddEventForm = ({
   onEventAdded,
   date,

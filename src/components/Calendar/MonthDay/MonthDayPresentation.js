@@ -1,13 +1,14 @@
 import { Popover } from "antd";
-import calendar from "./Calendar.module.scss";
+import calendar from "./MonthDay.module.scss";
+import * as dateFormate from "../../../constants/DateTimeFormates";
 const MonthDayPresentation = (props) => {
   const EventDetailPopupContent = (
     <div>
       <div className={calendar["event-detail-head"]}>{props.eventName}</div>
       {
         <div className={calendar["event-detail-content"]}>
-          On <b>{props.date.format("MMM Do YY")} </b> From{" "}
-          <b>{props.fromEventTime}</b> To <b>{props.toEventTime}</b>
+          On <b>{props.date.format(dateFormate.MONTH_DAY_DISPLAY_FORMATE)} </b>{" "}
+          From <b>{props.fromEventTime}</b> To <b>{props.toEventTime}</b>
         </div>
       }
       <div
