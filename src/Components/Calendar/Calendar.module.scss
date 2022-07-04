@@ -1,5 +1,3 @@
-@import "~antd/dist/antd.css";
-
 $darkcolor: #143381d3;
 $txtcolor: #ffff;
 $calendarheadbgcolor: #dce4f978;
@@ -51,7 +49,7 @@ body {
   font-size: 14px;
 }
 .calendar-container {
-  max-width: 98%;
+  max-width: 90%;
   background-color: #fdfefed3;
 
   margin: 0 auto;

@@ -1,4 +1,3 @@
-import "./Calendar.scss";
 import {
   getdateRange,
   getFirstDateOfCalendar,

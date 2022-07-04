@@ -4,7 +4,8 @@ import { Button, Form, Input, DatePicker, TimePicker } from "antd";
 import { connect } from "react-redux";
 import { saveEvent } from "../../redux/actions/eventActions";
 import PropTypes from "prop-types";
-
+import "../../../node_modules/antd/dist/antd.min.css";
+import calendar from "./Calendar.module.scss";
 const AddEventForm = ({
   onEventAdded,
   date,
@@ -23,7 +24,7 @@ const AddEventForm = ({
 
   const { TextArea } = Input;
   return (
-    <div className="event-form-container">
+    <div className={calendar["event-form-container"]}>
       <Form
         name="basic"
         labelCol={{

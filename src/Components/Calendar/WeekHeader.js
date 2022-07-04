@@ -1,5 +1,4 @@
 import { getWeekDaysByWeekNumber } from "./CalendarUtil";
-import "./Calendar.scss";
 import WeekHeaderPresentation from "./WeekHeaderPresentation";
 const WeekHeader = () => {
   const weekDays = getWeekDaysByWeekNumber();
