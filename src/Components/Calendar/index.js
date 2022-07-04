@@ -10,15 +10,11 @@ const EventCalendar = () => {
   const [selectedDate, setselectedDate] = useState(
     moment().format(dateFormate.DATE_FORMATE)
   );
-  const [eventData, setEvents] = useState([]);
-  const toggelCalendarForm = (date) => {
+  const [eventData, setEvents] = useState({});
+  const toggelCalendarForm = (date, eventDetail) => {
+    setEvents(eventDetail);
     setToggelForm(!toggelForm);
     if (toggelForm) setselectedDate(date);
-  };
-  const onEventAdded = (data) => {
-    var key = data.eventDate.format(dateFormate.DATE_FORMATE);
-    setEvents({ ...eventData, [key]: data });
-    toggelCalendarForm();
   };
 
   let calendarComponent = toggelForm ? (
@@ -27,7 +23,7 @@ const EventCalendar = () => {
     <AddEventForm
       date={selectedDate}
       eventData={eventData}
-      onEventAdded={onEventAdded}
+      toggelCalendarForm={toggelCalendarForm}
     />
   );
   return (

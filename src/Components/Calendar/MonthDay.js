@@ -3,15 +3,25 @@ import MonthDayPresentation from "./MonthDayPresentation";
 import moment from "moment";
 import * as dateFormate from "../../common/constants/DateTimeFormates";
 import "./Calendar.scss";
+import { connect } from "react-redux";
+import * as eventActions from "../../redux/actions/eventActions";
+import PropTypes from "prop-types";
+import { bindActionCreators } from "redux";
+import { useState, useEffect } from "react";
 const MonthDay = (props) => {
-  let eventName = props.eventData ? props.eventData.Name : undefined;
-  let fromEventTime = props.eventData?.EventTime[0].format(
+  const [eventDetail, setEventDetail] = useState(null);
+  useEffect(() => {
+    if (props.events[props.date]) console.log(props.events[props.date]);
+
+    setEventDetail(props.events[props.date]);
+  }, [props, props.events]);
+
+  let eventName = eventDetail ? eventDetail.Name : undefined;
+  let fromEventTime = eventDetail?.EventTime[0].format(
     dateFormate.TIME_FORMATE
   );
-  let toEventTime = props.eventData?.EventTime[1].format(
-    dateFormate.TIME_FORMATE
-  );
-  let Detail = props.eventData ? props.eventData.Detail : undefined;
+  let toEventTime = eventDetail?.EventTime[1].format(dateFormate.TIME_FORMATE);
+  let Detail = eventDetail ? eventDetail.Detail : undefined;
   let date = moment(props.date, dateFormate.DATE_FORMATE);
   const currentDate = moment().format(dateFormate.DATE_FORMATE);
   const calenderDate = date.format(dateFormate.DATE_FORMATE);
@@ -28,8 +38,8 @@ const MonthDay = (props) => {
       : "calendar-event";
 
   const onDayClicked = () => {
-    if (isCurrentMonthDate(moment(props.date, dateFormate.DATE_FORMATE))) {
-      props.onDayClicked(props.date, props.eventData);
+    if (isCurrentMonthDate(moment(date, dateFormate.DATE_FORMATE))) {
+      props.onDayClicked(props.date, eventDetail);
     }
   };
 
@@ -47,4 +57,23 @@ const MonthDay = (props) => {
     />
   );
 };
-export default MonthDay;
+
+MonthDay.propTypes = {
+  //  loadEvents: PropTypes.func.isRequired,
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      //    loadEvents: bindActionCreators(eventActions.loadEvents, dispatch),
+    },
+  };
+}
+function mapStateToProps(state) {
+  let events = state.events ? state.events : null;
+  return {
+    events,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MonthDay);
