@@ -6,8 +6,3 @@ export function saveEvent(event) {
 export function loadEventSuccess(events) {
   return { type: types.LOAD_EVENTS_SUCCESS, events };
 }
-export function loadEvents() {
-  return function (dispatch) {
-    dispatch(loadEventSuccess);
-  };
-}

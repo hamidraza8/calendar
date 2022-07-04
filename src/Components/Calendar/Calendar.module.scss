@@ -135,6 +135,15 @@ h1 {
   margin-left: 1vw;
   margin-top: 100vh;
 }
+.nav-prev-icon {
+  @extend .nav-icon;
+  margin-left: 1vw;
+}
+
+.nav-next-icon {
+  @extend .nav-icon;
+  margin-left: 1vw;
+}
 .calendar-event {
   @include inline-box;
   background-color: $eventbg;
